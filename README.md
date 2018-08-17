@@ -61,32 +61,6 @@ const schema = {
           label: 'Email Address'
         },
         {
-          name:'age',
-          type: 'Number',
-          label: 'Enter Age'
-        },
-        {
-          name:'password',
-          type: 'Password',
-          label: 'Enter Password',
-          required: true,
-          validators:[
-            {
-              name: 'required',
-              args: []
-            },
-            {
-              name: 'minLength',
-              args: [10]
-            }
-          ]
-        },
-        {
-          name:'birthday',
-          type: 'DateTime',
-          label: 'Enter Birthday'
-        },
-        {
           name:'plays',
           type: 'CheckBox',
           label: 'Plays?'
@@ -139,5 +113,5 @@ render((
 
 This will generate a form like this:
 
-![](http://i.imgur.com/DZQYPyu.png)
+![](https://github.com/fshaikh/react-form-meta/blob/master/resources/Form.JPG)
 
