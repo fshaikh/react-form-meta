@@ -115,3 +115,39 @@ This will generate a form like this:
 
 ![](https://github.com/fshaikh/react-form-meta/blob/master/resources/Form.JPG)
 
+### Form initialization
+
+To populate form with existing data (for eg when fetching from server), pass a `formData` prop object matching the meta schema:
+
+```jsx
+const formData = {
+  firstName: 'Furqan',
+  emailAddress: 'fur@reversecurrent.com',
+  plays: true
+};
+
+render((
+  <Form schema={schema}
+        formData={formData} />
+), document.getElementById("app"));
+```
+
+### Form event handlers
+
+#### Form submission
+
+You can pass a function as the `onSubmit` prop of your `Form` component to listen to when the form is submitted and its data are valid. It will be passed a result object having a `formData` attribute :
+
+```js
+const onSubmit = ({formData}) => console.log("Data submitted: ",  formData);
+
+render((
+  <Form schema={this.schema}
+        onSubmit = { (formData) => console.log(formData)} />
+), document.getElementById("app"));
+```
+
+#### Form data changes
+
+If you plan on being notified every time the form data are updated, you can pass an `onChange` handler, which will receive the same args as `onSubmit` any time a value is updated in the form.
+```
