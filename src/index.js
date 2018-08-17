@@ -12,7 +12,7 @@ class App extends Component {
 
     // Define the Form schema in JSON
     this.schema = {
-      title: 'Form',
+      title: 'Contact Details Form',
       description: 'Enter details below',
       properties: [
         {
@@ -36,32 +36,9 @@ class App extends Component {
           type: 'Email',
           label: 'Email Address'
         },
-        {
-          name:'age',
-          type: 'Number',
-          label: 'Enter Age'
-        },
-        {
-          name:'password',
-          type: 'Password',
-          label: 'Enter Password',
-          required: true,
-          validators:[
-            {
-              name: 'required',
-              args: []
-            },
-            {
-              name: 'minLength',
-              args: [10]
-            }
-          ]
-        },
-        {
-          name:'birthday',
-          type: 'DateTime',
-          label: 'Enter Birthday'
-        },
+       
+        
+        
         {
           name:'plays',
           type: 'CheckBox',
