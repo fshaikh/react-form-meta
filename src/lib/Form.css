@@ -1,0 +1,11 @@
+form {
+    width: 50%;
+    margin: 10px;
+}
+legend {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.validation-error{
+    color: red;
+}
