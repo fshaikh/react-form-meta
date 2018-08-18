@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error UI Snapshot tests for Error UI should render empty when showEror is false 1`] = `""`;
+
+exports[`Error UI Snapshot tests for Error UI should render empty when showEror is true and no error messages 1`] = `""`;
+
+exports[`Error UI Snapshot tests for Error UI should render error messages  1`] = `
+<ul
+  className="validation-error"
+>
+  <li>
+    <span
+      className="validation-error-text"
+    >
+      Error message 1
+    </span>
+  </li>
+  <li>
+    <span
+      className="validation-error-text"
+    >
+      Error message 2
+    </span>
+  </li>
+</ul>
+`;

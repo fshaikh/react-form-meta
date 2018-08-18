@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label Field Snapshot tests for Label Field should render correctly for non-required field 1`] = `
+<label
+  className={undefined}
+  htmlFor="firstName"
+>
+  First Name
+  
+</label>
+`;
+
+exports[`Label Field Snapshot tests for Label Field should render correctly for required field 1`] = `
+<label
+  className={undefined}
+  htmlFor="firstName"
+>
+  First Name
+  <span
+    className="required"
+  >
+    *
+  </span>
+</label>
+`;

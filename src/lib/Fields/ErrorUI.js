@@ -2,7 +2,7 @@ import React from 'react';
 import '../Form.css';
 
 export default function ErrorUI({showError, errorMessages}) {
-    if(!showError && errorMessages.length === 0) {
+    if(errorMessages.length === 0) {
         return '';
     }
     var index = 0;

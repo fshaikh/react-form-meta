@@ -58,6 +58,10 @@ export default class Form extends React.Component {
     onChange(event, name, value) {
         this.formData[name] = value != null ? value : event.target.value;
         this.validate();
+        // if client has supplied onChange event handler via props, invoke it
+        if(this.props.onChange) {
+            this.props.onChange(this.formData);
+        }
     }
 
     getFormBody() {
