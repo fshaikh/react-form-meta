@@ -1,14 +1,10 @@
 import React from 'react';
+import * as FieldControlFactory from '../FieldControlFactory';
 
 export default function LongTextField(props) {
-    const field = props.field;
     return (
             <div>
-                <textarea className="form-control"
-                    value={field.value}
-                    name={field.name}
-                    onChange = { (event) => props.onChange(event, field.name)}
-                />
+                <textarea {...FieldControlFactory.getFieldAttributes('textarea', props)} />
             </div>
     );
 }

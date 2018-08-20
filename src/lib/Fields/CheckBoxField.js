@@ -1,17 +1,21 @@
 import React from 'react';
-import LabelField from './LabelField'
+import LabelField from './LabelField';
+import * as FieldControlFactory from '../FieldControlFactory';
 
 export default function CheckBoxField(props) {
-    const field = props.field;
     return (
         <div className="form-check">
-            <input type="checkbox"
-                    className="form-check-input"
-                    value={props.value}
-                    name={field.name}
-                    id={field.name}
-                    onChange = { (event) => props.onChange(event, field.name, event.target.checked)} />
-            <LabelField field={field} />
+            <input {...FieldControlFactory.getFieldAttributes("checkbox", props,undefined, undefined,"form-check-input")}
+                    onChange = { (event) => {
+                                    event.stopPropagation();
+                                    props.onChange(event, event.target.checked)}
+                                } 
+                    onFocus = {
+                        (event) => {
+                            event.stopPropagation();
+                            props.onFocus(event, event.target.checked)}
+                    }/>
+            <LabelField field={props.field} />
         </div>
         
     );

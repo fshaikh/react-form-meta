@@ -1,15 +1,10 @@
 import React from 'react';
-
+import * as FieldControlFactory from '../FieldControlFactory';
 
 export default function DateTimeField(props) {
-    const field = props.field;
     return (
             <div>
-                <input type="date" className="form-control"
-                    value={props.value}
-                    name={field.name}
-                    onChange = { (event) => props.onChange(event, field.name)}
-                />
+                <input {...FieldControlFactory.getFieldAttributes("date", props)} />
             </div>
     );
 }

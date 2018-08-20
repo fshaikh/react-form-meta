@@ -1,5 +1,5 @@
 import React from 'react';
-
+import * as FieldControlFactory from '../FieldControlFactory';
 
 export default function RadioField(props) {
     const field = props.field;
@@ -9,10 +9,7 @@ export default function RadioField(props) {
           {field.enum.map((option) => {
               const id = field.name + index;
               const template =  <div className="form-check" key={id}>
-                                    <input className="form-check-input" type="radio"
-                                           name={field.name} id={id}
-                                           value={option} 
-                                           onChange = { (event) => props.onChange(event, field.name)} />
+                                    <input {...FieldControlFactory.getFieldAttributes("radio", props, id, option,"form-check-input")} />
                                     <label className="form-check-label" htmlFor={id}>
                                         {field.enumNames[index]}
                                     </label>

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Form.css';
 
 import FieldHOC from './Fields/FieldHOC';
-import getFieldControl from './FieldControlFactory';
+import * as FieldControlFactory from './FieldControlFactory';
 import Title from './FormElements/Title';
 import Description from './FormElements/Description';
 import SubmitButton from './FormElements/SubmitButton';
@@ -27,13 +27,14 @@ export default class Form extends React.Component {
         };
 
         // Bind the event handlers
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
+        this.bindEventHandlers();
     }
 
     render() {
         return (
-            <form>
+            <form 
+                onChange = { this.onChange }
+                onFocus  = { this.props.onFocus  ?  this.onFocus : undefined}>
                 <div className="form-group">
                     <fieldset>
                         <Title title={this.schema.title} />
@@ -55,8 +56,8 @@ export default class Form extends React.Component {
         this.props.onSubmit(this.formData)
     }
 
-    onChange(event, name, value) {
-        this.formData[name] = value != null ? value : event.target.value;
+    onChange(event, value) {    
+        this.formData[event.target.name] = this.getFieldValue(event, value);
         this.validate();
         // if client has supplied onChange event handler via props, invoke it
         if(this.props.onChange) {
@@ -64,9 +65,24 @@ export default class Form extends React.Component {
         }
     }
 
+    onFocus(event, value) {
+        let fieldValue = this.getFieldValue(event, value);
+        this.formData[event.target.name] = fieldValue
+        // if client has supplied onChange event handler via props, invoke it
+        if(this.props.onFocus) {
+            this.props.onFocus(event.target.name, fieldValue);
+        }
+    }
+
+    bindEventHandlers() {
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onFocus = this.onFocus.bind(this);
+    }
+
     getFormBody() {
         return this.schema.properties.map((fieldControl) => {
-            const Field = getFieldControl(fieldControl.type);
+            const Field = FieldControlFactory.getFieldControl(fieldControl.type);
             this.setValidators(fieldControl);
             return <FieldHOC field={fieldControl}
                              key={fieldControl.name}
@@ -78,13 +94,18 @@ export default class Form extends React.Component {
     }
 
     getField(Field, fieldControl) {
+        // add onChange, onFocus only when the props have them. This will prevent 
+        // adding redundant event handlers to all form element
         return <Field field={ fieldControl }
-                        onChange = {this.onChange}
+                        onChange = { this.onChange }
+                        onFocus = {this.onFocus}
                         value={this.formData[fieldControl.name] || ''}
                 />
     }
 
-    
+    getFieldValue(event, value) {
+        return value != null ? value : event.target.value;
+    } 
 
     setValidators(fieldControl) {
         this.validators.push({

@@ -94,7 +94,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Form schema={this.schema} onSubmit = { (formData) => console.log(formData)} formData={this.formData} />
+        <Form schema={this.schema}
+              formData={this.formData}
+              onSubmit = { (formData) => console.log(formData)}
+              onFocus = { (id, value) => {console.log(`${id}: ${value}`)}}
+               />
       </div>
     );
   }

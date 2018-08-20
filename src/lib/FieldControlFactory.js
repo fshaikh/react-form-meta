@@ -18,6 +18,20 @@ const components = {
     'Radio': RadioField
 };
 
-export default function getFieldControl(type) {
+export function getFieldControl(type) {
     return components[type];
+}
+
+export const getFieldAttributes = (type,
+                                   props,
+                                   id = props.field.name,
+                                   value = props.value,
+                                   className = "form-control") => {
+    return {
+        type: type,
+        className: className,
+        defaultValue : value,
+        name: props.field.name,
+        id: id
+    };
 }

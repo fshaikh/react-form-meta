@@ -1,5 +1,5 @@
 import React from 'react';
-
+import * as FieldControlFactory from '../FieldControlFactory';
 
 
 export default function ShortTextField(props) {
@@ -18,13 +18,10 @@ export default function ShortTextField(props) {
         default:
             type = 'text';
     };
+
     return (
             <div>
-                <input type={type} className="form-control"
-                    defaultValue = { props.value }
-                    name = { field.name }
-                    onChange = { (event) =>{  props.onChange(event, field.name)}}
-                />
+                <input {...FieldControlFactory.getFieldAttributes(type, props)} />
             </div>
-    );
+        );
 }
