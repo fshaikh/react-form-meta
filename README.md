@@ -4,7 +4,6 @@ react-form-meta
 A simple [React](http://facebook.github.io/react/) component capable of building HTML forms based on JSON metadata and using [Bootstrap](http://getbootstrap.com/) semantics by default.
 
 ## Table of Contents
-- [Philosophy](#philosophy)
 - [Installation](#installation)
      - [As a npm-based project dependency](#as-a-npm-based-project-dependency)
 - [Usage](#usage)
@@ -12,10 +11,7 @@ A simple [React](http://facebook.github.io/react/) component capable of building
      - [Form event handlers](#form-event-handlers)
         - [Form submission](#form-submission)
         - [Form data changes](#form-data-changes)
-        
-## Philosophy
-
-react-form-meta is meant to automatically generate a React form based on JSON metadata.
+        - [Form field focus events](#form-field-focus-events)
 
 ## Installation
 
@@ -150,4 +146,19 @@ render((
 #### Form data changes
 
 If you plan on being notified every time the form data are updated, you can pass an `onChange` handler, which will receive the same args as `onSubmit` any time a value is updated in the form.
+
+
+#### Form field focus events
+
+Sometimes you may want to trigger events or modify external state when a field has been focused, so you can pass an `onFocus` handler, which will receive the id of the input that is focused and the field value.
+
+```js
+const onFocus = (fieldId, fieldValue) => console.log(`${fieldId}: ${fieldValue}`);
+
+render((
+  <Form schema={this.schema}
+        onSubmit = { (formData) => console.log(formData)}
+        onFocus = {onFocus} />
+), document.getElementById("app"));
 ```
+
