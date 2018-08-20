@@ -157,7 +157,6 @@ const onFocus = (fieldId, fieldValue) => console.log(`${fieldId}: ${fieldValue}`
 
 render((
   <Form schema={this.schema}
-        onSubmit = { (formData) => console.log(formData)}
         onFocus = {onFocus} />
 ), document.getElementById("app"));
 ```
