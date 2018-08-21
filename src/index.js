@@ -83,8 +83,9 @@ class App extends Component {
         {
           name:'file-attach',
           type:'File',
-          label:'Enter single file',
-          multiple: false
+          label:'Choose images to upload (PNG, JPG)',
+          multiple: false,
+          allowedExtensions:['.jpg', '.jpeg','.png']
         },
         {
           name:'file-attach-multiple',

@@ -7,12 +7,14 @@ export default class FileFieldContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            files: []
+            files: [],
+            value:''
         };
 
         // bind event handlers
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleOnFocus = this.handleOnFocus.bind(this);
+        this.onFileDelete = this.onFileDelete.bind(this);
     }
 
     async handleOnChange(event){
@@ -36,17 +38,38 @@ export default class FileFieldContainer extends React.Component {
         }
         eventHandler(event, fileData);
         this.setState({
-            files: fileData
+            files: fileData,
+            value: this.getFileValue(fileData)
+        });
+    }
+
+    getFileValue(fileData) {
+        if(fileData.length === 0) {
+            return '';
+        }
+        if(fileData.length === 1) {
+            return fileData[0].name;
+        }
+        return `${fileData.length} files`;
+    }
+
+    onFileDelete(event , file) {
+        const fileData = this.state.files.filter(fileItem => fileItem.name !== file.name);
+        this.setState({
+            files: fileData,
+            value: this.getFileValue(fileData)
         });
     }
 
     render() {
         return(
-            <div>
+            <div className="custom-file">
                 <FileField field={this.props}
+                           value={this.state.value}
                            onChange={this.handleOnChange}
                            onFocus={this.handleOnFocus}/>
-                <FileItems files={this.state.files} />
+                <FileItems files={this.state.files}
+                           onFileDelete={this.onFileDelete} />
             </div>
         );
     }

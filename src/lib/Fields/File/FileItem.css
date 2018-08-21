@@ -1,3 +1,9 @@
+.file-item{
+    border: 1px solid blue;
+    border-radius: 2px;  
+}
+
 .file-name {
     font-weight: bold;
 }
+
