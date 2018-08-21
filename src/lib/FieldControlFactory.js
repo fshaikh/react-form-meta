@@ -5,6 +5,7 @@ import DateTimeField from './Fields/DataTimeField';
 import CheckBoxField from './Fields/CheckBoxField';
 import DropdownField from './Fields/Dropdown';
 import RadioField from './Fields/RadioField';
+import FileFieldContainer from './Fields/File/FileFieldContainer';
 
 const components = {
     'ShortText': ShortTextField,
@@ -15,7 +16,8 @@ const components = {
     'DateTime': DateTimeField,
     'CheckBox': CheckBoxField,
     'Select': DropdownField,
-    'Radio': RadioField
+    'Radio': RadioField,
+    'File': FileFieldContainer
 };
 
 export function getFieldControl(type) {

@@ -79,6 +79,18 @@ class App extends Component {
             "Enterprise"
           ],
           checked: 0
+        },
+        {
+          name:'file-attach',
+          type:'File',
+          label:'Enter single file',
+          multiple: false
+        },
+        {
+          name:'file-attach-multiple',
+          type:'File',
+          label:'Enter multiple file',
+          multiple: true
         }
       ]
     };
@@ -97,7 +109,7 @@ class App extends Component {
         <Form schema={this.schema}
               formData={this.formData}
               onSubmit = { (formData) => console.log(formData)}
-              onFocus = { (id, value) => {console.log(`${id}: ${value}`)}}
+              
                />
       </div>
     );
