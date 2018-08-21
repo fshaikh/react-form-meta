@@ -1,0 +1,1 @@
+1. Add PropTypes to all components
