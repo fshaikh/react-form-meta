@@ -192,4 +192,21 @@ schema = {
   }
 ```
 This will render in the form as below:
+![](https://github.com/fshaikh/react-form-meta/blob/master/resources/File%20Field.JPG)
 
+The file data and metadata will be available (onSubmit, onChange) as an array in the below format. File data will be available as a text string.
+```
+{
+    file-attach: [
+                    {
+                         data: "<text string>",
+                         name: "LICENSE.txt",
+                         extension: ".txt",
+                         size: 12335, // as bytes
+                         type: "text/plain",
+                         lastModified: <unix timestamp>
+                    }
+                 ]
+}
+```
+When file(s) are selected by user, the file UI is shown below the File field. User can click on 'X' to remove the selected file(s).
