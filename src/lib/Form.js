@@ -8,6 +8,7 @@ import Title from './FormElements/Title';
 import Description from './FormElements/Description';
 import SubmitButton from './FormElements/SubmitButton';
 import getValidator from './validators/validatorFactory';
+import FormError from './FormElements/FormError';
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -31,22 +32,32 @@ export default class Form extends React.Component {
     }
 
     render() {
+        const FormErrorComponent = this.getFormErrorComponent();
         return (
-            <form 
-                onChange = { this.onChange }
-                onFocus  = { this.props.onFocus  ?  this.onFocus : undefined}>
-                <div className="form-group">
-                    <fieldset>
-                        <Title title={this.schema.title} />
-                        <Description description={this.schema.description} />
-                        <div>
-                            {this.getFormBody()}
-                        </div>
-                    </fieldset>
-                </div>
-                <SubmitButton onClick = {(e) => {this.onSubmit(e)}} />
-            </form>
+            <FormErrorComponent onRenderError={this.onRenderError}>
+                <form 
+                    onChange = { this.onChange }
+                    onFocus  = { this.props.onFocus  ?  this.onFocus : undefined}>
+                    <div className="form-group">
+                        <fieldset>
+                            <Title title={this.schema.title} />
+                            <Description description={this.schema.description} />
+                            <div>
+                                {this.getFormBody()}
+                            </div>
+                        </fieldset>
+                    </div>
+                    <SubmitButton onClick = {(e) => {this.onSubmit(e)}} />
+                </form>
+            </FormErrorComponent>
         )
+    }
+
+    bindEventHandlers() {
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onFocus = this.onFocus.bind(this);
+        this.onRenderError = this.onRenderError.bind(this);
     }
 
     onSubmit(e) {
@@ -74,10 +85,10 @@ export default class Form extends React.Component {
         }
     }
 
-    bindEventHandlers() {
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.onFocus = this.onFocus.bind(this);
+    onRenderError(error, info) {
+        if(this.props.onRenderError) {
+            this.props.onRenderError(error, info);
+        }
     }
 
     getFormBody() {
@@ -87,7 +98,8 @@ export default class Form extends React.Component {
             return <FieldHOC field={fieldControl}
                              key={fieldControl.name}
                              showError={this.state.showError}
-                             errorMessages={this.getValidationMessage(fieldControl.name)}>
+                             errorMessages={this.getValidationMessage(fieldControl.name)}
+                    >
                         {this.getField(Field, fieldControl)}
                    </FieldHOC>
         });
@@ -106,6 +118,10 @@ export default class Form extends React.Component {
     getFieldValue(event, value) {
         return value != null ? value : event.target.value;
     } 
+
+    getFormErrorComponent() {
+        return  this.props.errorBoundary ? this.props.errorBoundary : FormError;
+    }
 
     setValidators(fieldControl) {
         this.validators.push({

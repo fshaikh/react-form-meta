@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 // Import the Form component
 import Form from './lib/Form';
-
+import CustomFormError from './CustomFormError';
 
 
 class App extends Component {
@@ -106,13 +106,16 @@ class App extends Component {
   
   render() {
     return (
+      <CustomFormError>
       <div>
         <Form schema={this.schema}
               formData={this.formData}
               onSubmit = { (formData) => console.log(formData)}
+              onRenderError = {(error, info) => console.log(error)}
               
                />
       </div>
+      </CustomFormError>
     );
   }
 }
