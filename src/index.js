@@ -14,6 +14,7 @@ class App extends Component {
     this.schema = {
       title: 'Contact Details Form',
       description: 'Enter details below',
+      rootIdPrefix:'contact-form',
       properties: [
         {
           name:'firstName',

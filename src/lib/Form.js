@@ -94,25 +94,37 @@ export default class Form extends React.Component {
     getFormBody() {
         return this.schema.properties.map((fieldControl) => {
             const Field = FieldControlFactory.getFieldControl(fieldControl.type);
+            const id = this.getId(fieldControl);
             this.setValidators(fieldControl);
-            return <FieldHOC field={fieldControl}
-                             key={fieldControl.name}
-                             showError={this.state.showError}
-                             errorMessages={this.getValidationMessage(fieldControl.name)}
-                    >
-                        {this.getField(Field, fieldControl)}
+            return <FieldHOC field = {fieldControl}
+                             key = {id}
+                             showError = {this.state.showError}
+                             errorMessages = {this.getValidationMessage(fieldControl.name)}>
+                       {this.getField(Field, fieldControl, id)}
                    </FieldHOC>
         });
     }
 
-    getField(Field, fieldControl) {
+    getField(Field, fieldControl, id) {
         // add onChange, onFocus only when the props have them. This will prevent 
         // adding redundant event handlers to all form element
         return <Field field={ fieldControl }
+                        id = {id}
                         onChange = { this.onChange }
                         onFocus = {this.onFocus}
                         value={this.formData[fieldControl.name] || ''}
                 />
+    }
+
+    /**
+     * Computes the id for each field. 
+     * By default, name is used as id for all rendered field. If schema contains rootIdPrefix, it is used
+     * as a prefix
+     * @param {object} fieldControl - Field control
+     */
+    getId(fieldControl) {
+        const rootIdPrefix = this.schema.rootIdPrefix;
+        return rootIdPrefix? `${rootIdPrefix}-${fieldControl.name}`:fieldControl.name;
     }
 
     getFieldValue(event, value) {
