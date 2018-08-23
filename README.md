@@ -14,6 +14,8 @@ A simple [React](http://facebook.github.io/react/) component capable of building
         - [Form field focus events](#form-field-focus-events)
 - [Form Fields](#formfields)
     - [File Field](#file-field)
+- [Form Error Boundary](#form-error-boundary)
+
 
 ## Installation
 
@@ -210,3 +212,15 @@ The file data and metadata will be available (onSubmit, onChange) as an array in
 }
 ```
 When file(s) are selected by user, the file UI is shown below the File field. User can click on 'X' to remove the selected file(s).
+
+### Form Error Boundary
+When any error occurs during the rendering of Form component, Form Error Component is rendered. Client can provide custom error component. When error occurs, onRenderError event is fired passing error and error information as arguments. Clients can use this event handler to do custom error handling, for eg: sending errors to remote service for auditing.
+
+Pass custom error component by wrapping Form component as shown below
+```
+<CustomFormError>
+        <Form schema={this.schema}
+              onRenderError = {(error, info) => console.log(error)}
+        />
+</CustomFormError>
+```
