@@ -12,6 +12,8 @@ A simple [React](http://facebook.github.io/react/) component capable of building
         - [Form submission](#form-submission)
         - [Form data changes](#form-data-changes)
         - [Form field focus events](#form-field-focus-events)
+- [Form Fields](#formfields)
+    - [File Field](#file-field)
 
 ## Installation
 
@@ -160,4 +162,34 @@ render((
         onFocus = {onFocus} />
 ), document.getElementById("app"));
 ```
+### Form Fields
+
+This section describes all the form fields supported by this component along with its usage.
+
+#### File Field
+Using File field allows users to select files. It support both single and multiple files with file extension restrictions. It uses HTML5 File API to implement this feature.
+
+Following is the json meta to be used when adding single/multiple file fields to a form
+
+```js
+schema = {
+      properties: [
+        {
+          name:'file-attach',
+          type:'File',
+          label:'Choose images to upload (PNG, JPG)',
+          multiple: false,
+          allowedExtensions:['.jpg', '.jpeg','.png']
+        },
+        {
+          name:'file-attach-multiple',
+          type:'File',
+          label:'Enter multiple file',
+          multiple: true
+        }
+      ]
+    };
+  }
+```
+This will render in the form as below:
 
