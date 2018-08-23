@@ -1,4 +1,13 @@
+/**
+ * Defined functions related to HTML5 file API
+ */
+
+/**
+ * Returns a custom file object from HTML5 File object
+ * @param {*} file - HTML5 File
+ */
     export const getFileObject = async (file) => {
+        // Return a promise, since reading file data is an asynchronous operation
         return new Promise((resolve , reject) => {
             if(file == null) {
                 resolve({});
@@ -16,7 +25,7 @@
 
             // construct FileReader object
             var fileReader = new FileReader();
-            // register for onload event. This is trigerred when file data is read
+            // register for onload event. This is trigerred when reading of file data is completed
             fileReader.onload = () => load(fileReader.result);
             // start the file reading process.
             fileReader.readAsText(file);

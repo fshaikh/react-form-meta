@@ -7,3 +7,8 @@
     font-weight: bold;
 }
 
+.delete-option{
+    float: right;
+    cursor: pointer;
+}
+
