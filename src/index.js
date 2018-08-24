@@ -37,9 +37,12 @@ class App extends Component {
           type: 'Email',
           label: 'Email Address'
         },
-       
-        
-        
+        {
+          name:'password',
+          type: 'Password',
+          label: 'Password',
+          hintText:'Password must be greater than 10 characters'
+        },
         {
           name:'plays',
           type: 'CheckBox',

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LabelField from './LabelField';
 import ErrorUI from './ErrorUI';
+import HintText from './HintText';
 
 export default function FieldHOC(props) {
     return (
@@ -11,6 +12,7 @@ export default function FieldHOC(props) {
                 {props.children}
             </div>
             <ErrorUI showError={props.showError} errorMessages={props.errorMessages} />
+            {props.field.hintText ? <HintText hintText={props.field.hintText}/> : undefined}
         </div>
     )
 }

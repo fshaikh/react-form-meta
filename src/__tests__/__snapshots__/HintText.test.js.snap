@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hint Text UI Snapshot tests for Hint Text UI should render Hint Text UI 1`] = `
+<p
+  className="hint-text"
+>
+  Password must be greater than 10 characters
+</p>
+`;
