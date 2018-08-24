@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Error component should render child view when no error 1`] = `
+<form
+  onChange={[Function]}
+  onFocus={undefined}
+>
+  <div
+    className="form-group"
+  >
+    <fieldset>
+      <legend>
+        Form
+      </legend>
+      <p
+        className="field-description"
+      />
+      <div />
+    </fieldset>
+  </div>
+  <div>
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
+
+exports[`Form Error component should render properly 1`] = `
+<form
+  onChange={[Function]}
+  onFocus={undefined}
+>
+  <div
+    className="form-group"
+  >
+    <fieldset>
+      <legend>
+        Form
+      </legend>
+      <p
+        className="field-description"
+      />
+      <div />
+    </fieldset>
+  </div>
+  <div>
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+</form>
+`;
