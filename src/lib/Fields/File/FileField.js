@@ -9,12 +9,12 @@ import * as FieldControlFactory from '../../FieldControlFactory';
  */
 export const FileField = ({field, value, onChange, onFocus}) =>{
     return (
-        <div>
-            <input {...FieldControlFactory.getFieldAttributes('file', field, undefined, value, "custom-file-input")}
+        <div className="custom-file">
+            <input {...FieldControlFactory.getFieldAttributes('file', field, value, "custom-file-input")}
                    onChange = {onChange}
                    multiple={field.field.multiple || false}
                    accept={field.field.allowedExtensions ? field.field.allowedExtensions.join() : undefined} />
-            <label className="custom-file-label" htmlFor={field.field.name}>{value === '' ? 'Choose File': value}</label>              
+            <label className="custom-file-label" id={field.field.id} htmlFor={field.field.id}>{value === '' ? 'Choose File': value}</label>              
         </div>
     );
 };

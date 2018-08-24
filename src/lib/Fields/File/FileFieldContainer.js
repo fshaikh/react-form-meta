@@ -116,14 +116,14 @@ export default class FileFieldContainer extends React.Component {
      */
     render() {
         return(
-            <div className="custom-file">
+            <React.Fragment>
                 <FileField field={this.props}
                            value={this.state.value}
                            onChange={this.handleOnChange}
                            onFocus={this.handleOnFocus}/>
                 <FileItems files={this.state.files}
                            onFileDelete={this.onFileDelete} />
-            </div>
+            </React.Fragment>
         );
     }
 }
