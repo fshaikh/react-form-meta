@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Component for defining error boundary for Form component
@@ -39,3 +40,8 @@ export default class FormError extends React.Component {
         return this.props.children;
     }
 }
+
+FormError.propTypes = {
+    children: PropTypes.node.isRequired,
+    onRenderError: PropTypes.func
+};

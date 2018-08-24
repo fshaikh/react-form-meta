@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './FileItem.css'
 
 export default function FileItem({file, onFileDelete}) {
@@ -12,3 +13,8 @@ export default function FileItem({file, onFileDelete}) {
         </li>
     );
 }
+
+FileItem.propTypes = {
+    file: PropTypes.instanceOf(File),
+    onFileDelete: PropTypes.func.isRequired
+};

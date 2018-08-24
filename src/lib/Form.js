@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Form.css';
 
@@ -181,3 +182,34 @@ export default class Form extends React.Component {
         return messages.map((message) => message.errorMessage);
     }
 }
+
+
+
+/**
+ * Custom validator is a function which takes the below 3 arguments.
+ * @param {object} props - Object containing props passed to the component
+ * @param {*} propName - Prop being validated
+ * @param {*} componentName - Component name
+ * @returns {null - If validation passes. Error if validation fails}
+ */ 
+const schemaValidator = (props, propName, componentName, location) => {
+    return null;
+}
+
+// Define prop types for Form component
+Form.propTypes = {
+    schema: PropTypes.object.isRequired,
+    formData: PropTypes.object,
+    onSubmit: PropTypes.func,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onRenderError: PropTypes.func,
+    errorBoundary: PropTypes.element
+};
+
+// Give a default schema, so Form is rendered empty and not throwing errors
+Form.defaultProps = {
+    schema :{
+        properties:[]
+    }
+};

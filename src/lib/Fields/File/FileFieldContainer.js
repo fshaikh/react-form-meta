@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FileField } from '../File/FileField';
 import * as FileHelper from './FileHelper';
 import FileItems from './FileItems';
@@ -126,29 +127,11 @@ export default class FileFieldContainer extends React.Component {
         );
     }
 }
-// export const FileFieldContainer = (props) => {
-//     async function handleOnChange(event){
-//         handleEvent(event, props.onChange);
-//     }
 
-//     async function handleOnFocus(event) {
-//         handleEvent(event, props.onFocus);
-//     }
+FileFieldContainer.propTypes = {
+    field: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func
+}
 
-//     async function handleEvent(event, eventHandler) {
-//         event.stopPropagation();
-//         var fileData  = [];
-//         Array.from(event.target.files)
-//              .forEach(async (file) => fileData.push(await FileHelper.getFileObject(file)));
-//         eventHandler(event, fileData)
-//     }
-//     return (
-//         <div>
-//             <FileField field={props}
-//                        onChange={handleOnChange}
-//                        onFocus={handleOnFocus}/>
-//             <FileItems files={} />
-//         </div>
-//     );
-// }
 

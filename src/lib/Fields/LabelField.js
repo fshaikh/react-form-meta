@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function LabelField(props) {
     const field = props.field;
@@ -9,5 +10,9 @@ export default function LabelField(props) {
             {requiredUI}
         </label> 
     );
+}
 
+LabelField.propTypes = {
+    field: PropTypes.object.isRequired,
+    className: PropTypes.string
 }

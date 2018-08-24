@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as FieldControlFactory from '../FieldControlFactory';
 
 
@@ -25,3 +26,7 @@ export default function ShortTextField(props) {
             </div>
         );
 }
+
+ShortTextField.propTypes = {
+    field: PropTypes.object.isRequired
+};

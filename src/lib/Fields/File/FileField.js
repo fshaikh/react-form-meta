@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as FieldControlFactory from '../../FieldControlFactory';
 
 /**
@@ -16,4 +17,11 @@ export const FileField = ({field, value, onChange, onFocus}) =>{
             <label className="custom-file-label" htmlFor={field.field.name}>{value === '' ? 'Choose File': value}</label>              
         </div>
     );
+};
+
+FileField.propTypes = {
+    field: PropTypes.object.isRequired,
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as FieldControlFactory from '../FieldControlFactory';
 
 export default function LongTextField(props) {
@@ -8,3 +9,8 @@ export default function LongTextField(props) {
             </div>
     );
 }
+
+LongTextField.propTypes = {
+    field: PropTypes.object.isRequired
+};
+

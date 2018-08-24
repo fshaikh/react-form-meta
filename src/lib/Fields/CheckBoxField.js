@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LabelField from './LabelField';
 import * as FieldControlFactory from '../FieldControlFactory';
 
@@ -20,3 +21,9 @@ export default function CheckBoxField(props) {
         
     );
 }
+
+CheckBoxField.propTypes = {
+    field: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func
+};

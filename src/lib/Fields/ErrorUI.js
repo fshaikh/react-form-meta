@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../Form.css';
 
 export default function ErrorUI({showError, errorMessages}) {
@@ -16,5 +17,9 @@ export default function ErrorUI({showError, errorMessages}) {
             
         </ul>
     )
-    
 }
+
+ErrorUI.propTypes = {
+    showError: PropTypes.bool,
+    errorMessages: PropTypes.array
+};
