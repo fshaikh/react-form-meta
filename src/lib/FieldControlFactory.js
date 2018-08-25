@@ -27,12 +27,13 @@ export function getFieldControl(type) {
 export const getFieldAttributes = (type,
                                    props,
                                    value = props.value,
-                                   className = "form-control") => {
+                                   className = "form-control",
+                                   id = props.id) => {
     return {
         type: type,
         className: className,
         defaultValue : value,
         name: props.field.name,
-        id: props.id
+        id: id
     };
 }

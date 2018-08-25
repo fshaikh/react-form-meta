@@ -10,7 +10,7 @@ describe('Label Field',() => {
                 name: 'firstName',
                 label:'First Name'
             };
-            const tree = renderer.create(<LabelField field={field} className={[]}/>);
+            const tree = renderer.create(<LabelField field={field} className={''}/>);
         });
     });
 
@@ -30,6 +30,17 @@ describe('Label Field',() => {
                 required: false,
                 name: 'firstName',
                 label:'First Name'
+            };
+            const tree = renderer.create(<LabelField field={field} />).toJSON();
+            expect(tree).toMatchSnapshot();
+        });
+
+        it('should not render when showLabel is false', () => {
+            const field = {
+                required: false,
+                name: 'firstName',
+                label:'First Name',
+                showLabel: false
             };
             const tree = renderer.create(<LabelField field={field} />).toJSON();
             expect(tree).toMatchSnapshot();

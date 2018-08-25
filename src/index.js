@@ -46,17 +46,20 @@ class App extends Component {
         {
           name:'plays',
           type: 'CheckBox',
-          label: 'Plays?'
+          label: 'Plays?',
+          showLabel: true
         },
         {
           name:'coverLetter',
           type: 'LongText',
-          label: 'Cover Letter'
+          label: 'Cover Letter',
+          showLabel: false
         },
         {
           name: 'hobbies',
           type: 'Select',
           label: 'Hobbies',
+          showLabel: false,
           enum: [
             "screen",
             "multiply",
