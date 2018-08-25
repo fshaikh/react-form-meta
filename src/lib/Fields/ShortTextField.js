@@ -19,7 +19,6 @@ export default function ShortTextField(props) {
         default:
             type = 'text';
     };
-
     return (
             <div>
                 <input {...FieldControlFactory.getFieldAttributes(type, props)} />

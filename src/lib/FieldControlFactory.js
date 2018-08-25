@@ -34,6 +34,7 @@ export const getFieldAttributes = (type,
         className: className,
         defaultValue : value,
         name: props.field.name,
-        id: id
+        id: id,
+        placeholder: props.field.placeholder
     };
 }

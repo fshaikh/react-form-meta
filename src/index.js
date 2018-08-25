@@ -44,6 +44,12 @@ class App extends Component {
           hintText:'Password must be greater than 10 characters'
         },
         {
+           name: 'githuburl',
+           type: 'ShortText',
+           label: 'Github URL',
+           placeholder: 'https://'
+        },
+        {
           name:'plays',
           type: 'CheckBox',
           label: 'Plays?',
