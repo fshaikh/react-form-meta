@@ -59,7 +59,8 @@ class App extends Component {
           name:'coverLetter',
           type: 'LongText',
           label: 'Cover Letter',
-          showLabel: false
+          showLabel: false,
+          rows: 3
         },
         {
           name: 'hobbies',

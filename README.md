@@ -18,6 +18,7 @@ A simple [React](http://facebook.github.io/react/) component capable of building
     - [Hint texts](#hint-texts)
     - [Field Labels](#field-labels)
     - [Placeholders](#placeholders)
+    - [Textarea rows option](#textarea-rows-option)
 - [Form Error Boundary](#form-error-boundary)
 
 
@@ -267,6 +268,17 @@ const schema =  {
     };
 ```
 ![](https://github.com/fshaikh/react-form-meta/blob/master/resources/Placeholder.JPG)
+
+#### Textarea rows option
+You can set the initial height of a textarea field by specifying rows option.
+```
+const schema =  {
+          name:'coverLetter',
+          type: 'LongText',
+          label: 'Cover Letter',
+          rows: 10
+    };
+```
 
 ### Form Error Boundary
 When any error occurs during the rendering of Form component, Form Error Component is rendered. Client can provide custom error component. When error occurs, onRenderError event is fired passing error and error information as arguments. Clients can use this event handler to do custom error handling, for eg: sending errors to remote service for auditing.
