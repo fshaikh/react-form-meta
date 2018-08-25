@@ -255,7 +255,7 @@ const schema = {
     };
 ```
 
-### Placeholders
+#### Placeholders
 You can add placeholder text to an input by using the placeholder option in the schema
 ```
 const schema =  {
