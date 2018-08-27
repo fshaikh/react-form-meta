@@ -19,6 +19,7 @@ A simple [React](http://facebook.github.io/react/) component capable of building
     - [Field Labels](#field-labels)
     - [Placeholders](#placeholders)
     - [Textarea rows option](#textarea-rows-option)
+    - [Form action buttons](#form-action-buttons)
 - [Form Error Boundary](#form-error-boundary)
 
 
@@ -277,6 +278,27 @@ const schema =  {
           type: 'LongText',
           label: 'Cover Letter',
           rows: 10
+    };
+```
+
+#### Form action buttons
+You can provide custom buttons to your form via the actionButtons property in JSON schema. Otherwise a default submit button will be rendered.
+```
+const schema =  {
+          ...,
+          actionButtons:[
+              // Submit Button
+              {
+                    type:"ActionSubmit",
+                    text: "Save and Close"
+              },
+              // Cancel button. Can provide callback function using action property
+              {
+                    type:"ActionButton",
+                    text: "Cancel",
+                    action: (event, formData) => {console.log(formData)}
+              }
+          ]
     };
 ```
 

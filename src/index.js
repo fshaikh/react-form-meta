@@ -15,6 +15,17 @@ class App extends Component {
       title: 'Contact Details Form',
       description: 'Enter details below',
       rootIdPrefix:'contact-form',
+      actionButtons:[
+         {
+              type:"ActionSubmit",
+	            text: "Save and Close"
+	       },
+	       {
+              type:"ActionButton",
+              text: "Cancel",
+              action: (event, formData) => {console.log('form cancelled'); console.log(formData)}
+	       }
+     ],
       properties: [
         {
           name:'firstName',

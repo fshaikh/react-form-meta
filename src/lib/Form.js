@@ -7,9 +7,9 @@ import FieldHOC from './Fields/FieldHOC';
 import * as FieldControlFactory from './FieldControlFactory';
 import Title from './FormElements/Title';
 import Description from './FormElements/Description';
-import SubmitButton from './FormElements/SubmitButton';
 import getValidator from './validators/validatorFactory';
 import FormError from './FormElements/FormError';
+import { ActionButtons } from './FormElements/ActionButtons';
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -48,7 +48,10 @@ export default class Form extends React.Component {
                             </div>
                         </fieldset>
                     </div>
-                    <SubmitButton onClick = {(e) => {this.onSubmit(e)}} />
+                    {/* <SubmitButton onClick = {(e) => {this.onSubmit(e)}} /> */}
+                    <ActionButtons actionButtons={this.schema.actionButtons}
+                                   onClick = {(e) => {this.onSubmit(e)}}
+                                   onNonSubmitClick = {this.onNonSubmitAction}/>
                 </form>
             </FormErrorComponent>
         )
@@ -59,6 +62,7 @@ export default class Form extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.onFocus = this.onFocus.bind(this);
         this.onRenderError = this.onRenderError.bind(this);
+        this.onNonSubmitAction = this.onNonSubmitAction.bind(this)
     }
 
     onSubmit(e) {
@@ -66,6 +70,11 @@ export default class Form extends React.Component {
         // perform form validation based on each field validator
         this.validate();
         this.props.onSubmit(this.formData)
+    }
+
+    onNonSubmitAction(event, action) {
+        event.preventDefault();
+        action(event, this.formData)
     }
 
     onChange(event, value) {    
