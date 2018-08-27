@@ -301,6 +301,7 @@ const schema =  {
           ]
     };
 ```
+![](https://github.com/fshaikh/react-form-meta/blob/master/resources/Action%20Buttons.JPG)
 
 ### Form Error Boundary
 When any error occurs during the rendering of Form component, Form Error Component is rendered. Client can provide custom error component. When error occurs, onRenderError event is fired passing error and error information as arguments. Clients can use this event handler to do custom error handling, for eg: sending errors to remote service for auditing.
