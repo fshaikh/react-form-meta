@@ -45,7 +45,7 @@ import Form from "react-form-meta";
 const schema = {
       title: 'Form',
       description: 'Enter details below',
-      properties: [
+      fields: [
         {
           name:'firstName',
           type: 'ShortText',
@@ -182,7 +182,7 @@ Following is the json meta to be used when adding single/multiple file fields to
 
 ```js
 schema = {
-      properties: [
+      fields: [
         {
           name:'file-attach',
           type:'File',
