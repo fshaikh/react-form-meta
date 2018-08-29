@@ -33,10 +33,20 @@ export default class Form extends React.Component {
     }
 
     render() {
+        const {
+            id,
+            name,
+            autoComplete,
+            className
+        } = this.props;
         const FormErrorComponent = this.getFormErrorComponent();
         return (
             <FormErrorComponent onRenderError={this.onRenderError}>
                 <form 
+                    id = {id}
+                    name = {name}
+                    className = {className}
+                    autocomplete = {autoComplete}
                     onChange = { this.onChange }
                     onFocus  = { this.props.onFocus  ?  this.onFocus : undefined}>
                     <div className="form-group">
@@ -207,6 +217,10 @@ const schemaValidator = (props, propName, componentName, location) => {
 
 // Define prop types for Form component
 Form.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    autoComplete: PropTypes.string,
+    className: PropTypes.string,
     schema: PropTypes.object.isRequired,
     formData: PropTypes.object,
     onSubmit: PropTypes.func,

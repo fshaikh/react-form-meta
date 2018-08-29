@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AppShell from './router/AppShell'
 import CustomFormError from './CustomFormError';
-
+import Form from './lib/Form'
 import Auth from './router/Auth';
 import Settings from './router/Settings'
 
@@ -137,21 +137,26 @@ class App extends Component {
       <BrowserRouter>
         <CustomFormError>
           <div>
-            {/* <Form schema={this.schema}
+            <Form 
+                  id="form-id"
+                  name="form-name"
+                  className="form-class form-class2"
+                  autoComplete="off"
+                  schema={this.schema}
                   formData={this.formData}
                   onSubmit = { (formData) => console.log(formData)}
                   onRenderError = {(error, info) => console.log(error)}
                   
-                  /> */}
-            <AppShell />
+                  />
+            {/* <AppShell />
             <div className="center-content">
                 <Switch>
                   <Route exact path="/auth" component={Auth} />
                   <Route exact path="/settings" component={Settings} />
                   <Route exact path="/" component={Auth} />
-                  <Route component={NotFound}/>
+                  <Route path="*" component={NotFound}/>
                 </Switch>
-            </div>
+            </div> */}
           </div>
         </CustomFormError>
       </BrowserRouter>

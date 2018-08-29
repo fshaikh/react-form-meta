@@ -20,6 +20,7 @@ A simple [React](http://facebook.github.io/react/) component capable of building
     - [Placeholders](#placeholders)
     - [Textarea rows option](#textarea-rows-option)
     - [Form action buttons](#form-action-buttons)
+    - [Form attributes](#form-attributes)
 - [Form Error Boundary](#form-error-boundary)
 
 
@@ -302,6 +303,17 @@ const schema =  {
     };
 ```
 ![](https://github.com/fshaikh/react-form-meta/blob/master/resources/Action%20Buttons.JPG)
+
+#### Form attributes
+The Form component supports the following html attributes:
+```
+<Form
+  id="form-id"
+  name="form-name"
+  className="form-class form-class2"
+  autoComplete="off"
+  schema={} />
+```
 
 ### Form Error Boundary
 When any error occurs during the rendering of Form component, Form Error Component is rendered. Client can provide custom error component. When error occurs, onRenderError event is fired passing error and error information as arguments. Clients can use this event handler to do custom error handling, for eg: sending errors to remote service for auditing.

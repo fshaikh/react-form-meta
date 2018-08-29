@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, Route} from 'react-router-dom'
+import {NavLink, Route, Switch} from 'react-router-dom'
 import Login from './Login';
 import Signup from './Signup';
 const Auth = () => {
@@ -19,9 +19,11 @@ const Auth = () => {
             </nav>
             {/* These are nested routes */}
             <div>
-                <Route path="/login" component={Login}/>   
-                <Route path="/signup" component={Signup}/>
-                <Route path="/auth" component={Login}/>
+                <Switch>
+                    <Route path="/login" component={Login}/>   
+                    <Route path="/signup" component={Signup}/>
+                    <Route path="/auth" component={Login}/>
+                </Switch>
             </div>
         </React.Fragment>
     );
