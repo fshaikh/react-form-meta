@@ -29,7 +29,7 @@ class App extends Component {
               action: (event, formData) => {console.log('form cancelled'); console.log(formData)}
 	       }
      ],
-      properties: [
+      fields: [
         {
           name:'firstName',
           type: 'ShortText',

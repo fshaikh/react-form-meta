@@ -112,7 +112,7 @@ export default class Form extends React.Component {
     }
 
     getFormBody() {
-        return this.schema.properties.map((fieldControl) => {
+        return this.schema.fields.map((fieldControl) => {
             const Field = FieldControlFactory.getFieldControl(fieldControl.type);
             const id = this.getId(fieldControl);
             this.setValidators(fieldControl);
@@ -233,6 +233,6 @@ Form.propTypes = {
 // Give a default schema, so Form is rendered empty and not throwing errors
 Form.defaultProps = {
     schema :{
-        properties:[]
+        fields:[]
     }
 };
