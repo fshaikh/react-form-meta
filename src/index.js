@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-// Import the Form component
-import Form from './lib/Form';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AppShell from './router/AppShell'
 import CustomFormError from './CustomFormError';
+
+import Auth from './router/Auth';
+import Settings from './router/Settings'
+
 
 
 class App extends Component {
@@ -131,19 +134,36 @@ class App extends Component {
   
   render() {
     return (
-      <CustomFormError>
-      <div>
-        <Form schema={this.schema}
-              formData={this.formData}
-              onSubmit = { (formData) => console.log(formData)}
-              onRenderError = {(error, info) => console.log(error)}
-              
-               />
-      </div>
-      </CustomFormError>
+      <BrowserRouter>
+        <CustomFormError>
+          <div>
+            {/* <Form schema={this.schema}
+                  formData={this.formData}
+                  onSubmit = { (formData) => console.log(formData)}
+                  onRenderError = {(error, info) => console.log(error)}
+                  
+                  /> */}
+            <AppShell />
+            <div className="center-content">
+                <Switch>
+                  <Route exact path="/auth" component={Auth} />
+                  <Route exact path="/settings" component={Settings} />
+                  <Route exact path="/" component={Auth} />
+                  <Route component={NotFound}/>
+                </Switch>
+            </div>
+          </div>
+        </CustomFormError>
+      </BrowserRouter>
     );
   }
 }
+
+const NotFound = () => {
+    return (
+      <div>Not found</div>
+    )
+};
 
 
 
