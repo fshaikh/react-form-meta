@@ -7,7 +7,8 @@ export default function LongTextField(props) {
     return (
             <div>
                 <textarea {...FieldControlFactory.getFieldAttributes('textarea', props)}
-                          rows={field.rows ? field.rows : undefined}           
+                          rows={field.rows ? field.rows : undefined} 
+                          onChange={(event) => props.onChange(event,event.target.value)}          
                 />
             </div>
     );

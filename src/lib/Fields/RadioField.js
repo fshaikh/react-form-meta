@@ -7,12 +7,13 @@ export default function RadioField(props) {
     var index = 0;
     return (
       <div>
-          {field.enum.map((option) => {
+          {field.properties.enum.map((option) => {
               const id = field.name + index;
               const template =  <div className="form-check" key={id}>
-                                    <input {...FieldControlFactory.getFieldAttributes("radio", props, option,"form-check-input",id)} />
+                                    <input {...FieldControlFactory.getFieldAttributes("radio", props, option,"form-check-input",id)}
+                                           onChange={(event) => props.onChange(event,event.target.value)} />
                                     <label className="form-check-label" htmlFor={id}>
-                                        {field.enumNames[index]}
+                                        {field.properties.enumNames[index]}
                                     </label>
                                 </div>
                 index++;

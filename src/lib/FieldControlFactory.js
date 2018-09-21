@@ -6,6 +6,7 @@ import CheckBoxField from './Fields/CheckBoxField';
 import DropdownField from './Fields/Dropdown';
 import RadioField from './Fields/RadioField';
 import FileFieldContainer from './Fields/File/FileFieldContainer';
+import LabelField from './Fields/LabelField';
 
 const components = {
     'ShortText': ShortTextField,
@@ -15,9 +16,10 @@ const components = {
     'Password': ShortTextField,
     'DateTime': DateTimeField,
     'CheckBox': CheckBoxField,
-    'Select': DropdownField,
+    'DropDown': DropdownField,
     'Radio': RadioField,
-    'File': FileFieldContainer
+    'File': FileFieldContainer,
+    'Label': LabelField
 };
 
 export function getFieldControl(type) {

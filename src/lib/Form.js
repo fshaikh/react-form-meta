@@ -10,6 +10,7 @@ import Description from './FormElements/Description';
 import getValidator from './validators/validatorFactory';
 import FormError from './FormElements/FormError';
 import { ActionButtons } from './FormElements/ActionButtons';
+import Rows from './FormElements/Rows/Rows';
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -34,11 +35,14 @@ export default class Form extends React.Component {
 
     render() {
         const {
+            title,
+            description,
+            rootIdPrefix,
             id,
             name,
-            autoComplete,
-            className
-        } = this.props;
+            className,
+            autoComplete
+        } = this.props.schema.formProperties;
         const FormErrorComponent = this.getFormErrorComponent();
         return (
             <FormErrorComponent onRenderError={this.onRenderError}>
@@ -46,13 +50,13 @@ export default class Form extends React.Component {
                     id = {id}
                     name = {name}
                     className = {className}
-                    autocomplete = {autoComplete}
+                    autoComplete = {autoComplete}
                     onChange = { this.onChange }
                     onFocus  = { this.props.onFocus  ?  this.onFocus : undefined}>
                     <div className="form-group">
                         <fieldset>
-                            <Title title={this.schema.title} />
-                            <Description description={this.schema.description} />
+                            <Title title={title} />
+                            <Description description={description} />
                             <div>
                                 {this.getFormBody()}
                             </div>
@@ -112,17 +116,18 @@ export default class Form extends React.Component {
     }
 
     getFormBody() {
-        return this.schema.fields.map((fieldControl) => {
-            const Field = FieldControlFactory.getFieldControl(fieldControl.type);
-            const id = this.getId(fieldControl);
-            this.setValidators(fieldControl);
-            return <FieldHOC field = {fieldControl}
-                             key = {id}
-                             showError = {this.state.showError}
-                             errorMessages = {this.getValidationMessage(fieldControl.name)}>
-                       {this.getField(Field, fieldControl, id)}
-                   </FieldHOC>
-        });
+        return <Rows rows={this.schema.rows} />;
+        // return this.schema.fields.map((fieldControl) => {
+        //     const Field = FieldControlFactory.getFieldControl(fieldControl.type);
+        //     const id = this.getId(fieldControl);
+        //     this.setValidators(fieldControl);
+        //     return <FieldHOC field = {fieldControl}
+        //                      key = {id}
+        //                      showError = {this.state.showError}
+        //                      errorMessages = {this.getValidationMessage(fieldControl.name)}>
+        //                {this.getField(Field, fieldControl, id)}
+        //            </FieldHOC>
+        // });
     }
 
     getField(Field, fieldControl, id) {

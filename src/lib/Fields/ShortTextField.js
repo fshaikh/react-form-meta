@@ -21,7 +21,8 @@ export default function ShortTextField(props) {
     };
     return (
             <div>
-                <input {...FieldControlFactory.getFieldAttributes(type, props)} />
+                <input {...FieldControlFactory.getFieldAttributes(type, props)}
+                        onChange={(event) => props.onChange(event,event.target.value)} />
             </div>
         );
 }

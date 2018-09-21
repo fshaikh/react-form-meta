@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import LabelField from './LabelField';
 import ErrorUI from './ErrorUI';
 import HintText from './HintText';
+import FieldControlsEnum from '../Shared/Models/FieldControlEnum';
 
 export default function FieldHOC(props) {
     return (
         <div className="form-group">
-            <LabelField field={props.field} />
+            {getLabel(props.field)}
             <div>
                 {props.children}
             </div>
@@ -15,6 +16,10 @@ export default function FieldHOC(props) {
             {props.field.hintText ? <HintText hintText={props.field.hintText}/> : undefined}
         </div>
     )
+}
+
+const getLabel = (field) => {
+    return field.type === FieldControlsEnum.Label ? '' : <LabelField field={field} />;
 }
 
 FieldHOC.propTypes = {

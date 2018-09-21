@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../Form.css';
 
 export default function ErrorUI({showError, errorMessages}) {
-    if(errorMessages.length === 0) {
+    if(errorMessages == null || errorMessages.length === 0) {
         return '';
     }
     var index = 0;

@@ -6,10 +6,12 @@ export default function DropdownField(props) {
     const field = props.field;
     var index = 0;
     return (
-        <select {...FieldControlFactory.getFieldAttributes("select", props)}>
-            {field.enumNames.map((option) => {
-                return <option key={option} value={field.enum[index++]}>{option}</option>
+        <select {...FieldControlFactory.getFieldAttributes("select", props)}
+                onChange={(event) => props.onChange(event,event.target.value)}>
+            {field.properties.enumNames.map((option) => {
+                return <option key={option} value={field.properties.enum[index++]}>{option}</option>
             })}
+            
         </select>
     );
 }

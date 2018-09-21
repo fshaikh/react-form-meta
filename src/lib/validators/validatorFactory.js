@@ -2,7 +2,8 @@ import {Validators} from './validatorExports';
 
 const validatorKeys = {
     'required': Validators.required,
-    'minLength': Validators.minLength
+    'minLength': Validators.minLength,
+    'maxLength': Validators.maxLength
 };
 
 
@@ -12,6 +13,8 @@ export default function getValidator(key) {
             return validatorKeys.required;
         case 'minLength':
             return validatorKeys.minLength;
+        case 'maxLength':
+            return validatorKeys.maxLength;
         default:
             return () => {};
     }

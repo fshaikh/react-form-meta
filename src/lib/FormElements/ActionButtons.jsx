@@ -30,7 +30,7 @@ export const ActionButtons = (props) => {
 };
 
 const getActionButtons = (props) => {
-    if(props.actionButtons.length === 0) {
+    if(props.actionButtons == null || props.actionButtons.length === 0) {
         const actionButton = {text: 'Submit'};
         return <ActionButton  actionButton = {actionButton}
                               className = "btn-primary"

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function LabelField(props) {
     const field = props.field;
-    const requiredUI = field.required ? <span className="required">*</span> : '';
+    const requiredUI = isRequired(field) ? <span className="required">*</span> : '';
     const showLabel = field.showLabel === undefined ? true : field.showLabel;
 
     if(showLabel) {
@@ -15,6 +15,14 @@ export default function LabelField(props) {
         );
     }
     return '';
+}
+
+const isRequired = (field) => {
+    const required = Object.keys(field.validators).find((value) => value === 'required');
+    if(required == null) {
+        return false;
+    }
+    return field.validators[required].args[0] === true;
 }
 
 LabelField.propTypes = {
